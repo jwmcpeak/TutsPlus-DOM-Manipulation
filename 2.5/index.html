@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Introduction to the DOM</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <style>
+            body {
+                font-size: 1.5em;
+                margin: 15px;
+            }
+
+            .dark {
+                background-color: black;
+                color: white;
+            }
+        </style>
+    </head>
+    <body class="dark">
+        <h1 id="intro-text">Manipulating the DOM</h1>
+        <ul></ul>
+        <script>
+            let topics = [
+                'Intro to DOM',
+                'Getting Elements',
+                'Querying the DOM',
+                'Creating Elements',
+                'Removing Elements',
+                'Modifying Element Classes'
+            ];
+            
+            let h1Element = document.getElementById('intro-text');
+            let scriptElement = document.querySelector('script');
+            let ulElement = document.querySelector('ul');
+            
+            let olElement = document.createElement('ol');
+
+            topics.forEach(function(text) {
+                let li = document.createElement('li');
+                li.innerHTML = text;
+
+                olElement.appendChild(li);
+            });
+
+            //let lastLi = olElement.removeChild(olElement.lastChild);
+            let lastLi = olElement.lastChild;
+
+            lastLi.remove();
+            ulElement.appendChild(lastLi);
+
+
+
+            //document.body.appendChild(olElement);
+            //document.body.insertBefore(olElement, scriptElement);
+
+            h1Element.insertAdjacentElement('afterend', olElement);
+        </script>
+    </body>
+</html>
